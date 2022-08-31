@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 class Work_place(models.Model):
     country = models.CharField(max_length=50)
@@ -32,5 +33,8 @@ class Phone_book(models.Model):
         blank=True, null=True,
     )
 
+    def get_absolute_url(self):
+        return reverse('show_all', kwargs={'pk' : self.pk})
+
     def __str__(self):
-        return f'{self.name}, {self.country_code} - {self.value}, {self.work_info}'
+        return f'{self.name}, {self.country_code} - {self.value}, {self.work_info.all()}'

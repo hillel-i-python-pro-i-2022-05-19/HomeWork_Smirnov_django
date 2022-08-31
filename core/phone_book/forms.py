@@ -1,7 +1,7 @@
 from django.forms import ModelForm
 from .models import Phone_book
 
-class Phone_book_Form(ModelForm):
+class PhoneBookCreationForm(ModelForm):
     class Meta:
         model = Phone_book
-        fields = ('name', 'value',)
+        fields = ['name', 'value', 'country_code', 'work_info', 'email']
