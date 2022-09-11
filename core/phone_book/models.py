@@ -25,7 +25,12 @@ class Phone_book(models.Model):
 
     name = models.CharField('Name', max_length=200)
     value = models.PositiveBigIntegerField('Phone number')
-    country_code = models.CharField('Country code', max_length=10, choices=country_codes, blank=True)
+    country_code = models.CharField(
+        'Country code', 
+        max_length=10, 
+        choices=country_codes, 
+        blank=True
+        )
     work_info = models.ManyToManyField(Work_place)
     email = models.ForeignKey(
         Email, 
