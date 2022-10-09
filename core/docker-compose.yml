@@ -1,8 +1,19 @@
 version: "3.9"
 
 services:
+  my_db:
+    image: nouchka/sqlite3:latest
+    volumes:
+    - ./data/db:/root/db
+    environment:
+    - SQLITE_DB=db.sqlite3
+
   core:
     build: .
-    ports: 
-    - "8000:8000"
-    command: python manage.py runserver 0.0.0.0:8000
+    command: python3 manage.py runserver 0.0.0.0:8000
+    volumes:
+    - .:/core
+    ports:
+      - "8000:8000"
+    depends_on:
+    - my_db

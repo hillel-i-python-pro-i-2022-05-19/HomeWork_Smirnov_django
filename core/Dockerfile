@@ -1,8 +1,6 @@
 FROM python:3.10
 
-ARG WORKDIR=/wd
-
-WORKDIR ${WORKDIR}
+WORKDIR /core
 
 RUN apt update && apt upgrade -y
 
@@ -14,4 +12,3 @@ RUN pip install --upgrade pip && \
 COPY ./manage.py manage.py
 COPY ./core core
 COPY ./phone_book phone_book
-
